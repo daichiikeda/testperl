@@ -7,7 +7,7 @@ use DBI;
 my $id = 7;
 
 my $dbh = DBI->connect("dbi:SQLite:dbname=friends.db");
-#テーブル情報
+#テーブル情報です
 #$dbh->do("create table friends(id integer primary key autoincrement, name text, age text, birthday text);");
 #登録情報
 #$dbh->do("insert into friends (name, age, birthday) values ('yamada', '25', '1990/12/12');");
