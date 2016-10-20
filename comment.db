@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use DBI;
+
+
+sub select_friend_data{
+my ($dbh, $name, $age, $birthday) = @_;
+my $sql = 'select * from friends where name like "%d%"';
+my $sth = $dbh->prepare($sql);
+$sth->execute($name, $age, $birthday);
+}
+
+select_friend_data($dbh, $form) if $form->{action} eq 'select';

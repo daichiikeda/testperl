@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>[% title %]</title>
+</head>
+<body>
+<h1>[% title %]</h1>
+<p>checkしてください:</p>
+<form action="[% script %]" method="post">
+<input type="radio" name="where_column" value="id">Id
+<input type="radio" name="where_column" value="name">Name
+<input type="radio" name="where_column" value="age">Age
+<input type="radio" name="where_column" value="birthday">Birthday
+<br><br>
+<input type="text" size="20" name="search_word">
+<button type="submit" name='action', value="search">検索</button><br><br>
+</form>
+[% IF search_friends %]
+<h2>検索結果</h2>
+    [% FOREACH sf IN search_friends %]
+    <form action="[% script %]" method="post">
+    <tr>
+        <td><input type="hidden" name="id" value="[% sf.0 %]">[% sf.0 %]</td>
+        <td><input type="text" name="name" value="[% sf.1 %]"></td>
+        <td><input type="text" name="age" value="[% sf.2 %]"></td>
+        <td><input type="text" name="birthday" value="[% sf.3 %]"></td>
+        <td><button type="submit" name='action' value="edit">更新</buttan></td>
+        <td><button type="submit" name='action' value="delete">削除</buttan></td>
+    </tr>
+    </form>
+    [% END %]
+[% END %]
+
+<table class="comment_table">
+    <thead>
+      <tr>
+          <th scope="cols">Name</th>
+          <th scope="cols">Age</th>
+          <th scope="cols">Birthday</th>
+          <th scope="cols">登録</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <form action="[% script %]" method="post">
+      <tr>
+          <td><input type="text" name="name"></td>
+          <td><input type="text" name="age"></td>
+          <td><input type="text" name="birthday"></td>
+          <td><button type="submit" name='action' value="insert">登録</buttan></td>
+      </tr>
+      </form>
+
+  </tbody>
+  </table>
+  <br>
+  <table class="comment_table">
+  <thead>
+    <tr>
+        <th scope="cols">id</th>
+        <th scope="cols">Name</th>
+        <th scope="cols">Age</th>
+        <th scope="cols">Birthday</th>
+        <th scope="cols">更新</th>
+        <th scope="cols">削除</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    [% FOREACH f IN friends %]
+    <form action="[% script %]" method="post">
+    <tr>
+        <td><input type="hidden" name="id" value="[% f.0 %]">[% f.0 %]</td>
+        <td><input type="text" name="name" value="[% f.1 %]"></td>
+        <td><input type="text" name="age" value="[% f.2 %]"></td>
+        <td><input type="text" name="birthday" value="[% f.3 %]"></td>
+        <td><button type="submit" name='action' value="edit">更新</buttan></td>
+        <td><button type="submit" name='action' value="delete">削除</buttan></td>
+    </tr>
+    </form>
+    [% END %]
+
+    </tbody>
+    </table>
+</body>
+</html>
