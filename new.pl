@@ -3,3 +3,5 @@ use strict;
 use warnings;
 
 print "おはよう\n";
+
+print "こんにちわ\n";
